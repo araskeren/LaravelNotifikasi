@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $dispatchesEvents = [
+      'created' => PostObserver::class,
+    ];
+
     protected $fillable = [
         'user_id', 'title', 'description'
     ];
@@ -14,4 +18,6 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
 }

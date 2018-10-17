@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Notifications\NewPost;
 
 class PostsController extends Controller
 {
@@ -41,6 +42,8 @@ class PostsController extends Controller
             'description' => $request->input('description'),
             'user_id'   => Auth::user()->id,
         ]);
+
+
 
         return redirect('/posts')->with('status', 'post was created successfully');
     }
